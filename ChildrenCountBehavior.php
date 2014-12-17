@@ -6,7 +6,7 @@
  * @link http://idealia.pl
  */
 
-namespace app\components;
+namespace idealia\behavior;
 
 
 use app\modules\asset\modules\calendar\models\Event;
