@@ -6,7 +6,7 @@
  * @link http://idealia.pl
  */
 
-namespace app\components;
+namespace idealia\behavior;
 
 use yii\base\Event;
 use yii\base\Behavior;
