@@ -8,8 +8,7 @@
 
 namespace app\components;
 
-
-use app\modules\asset\modules\calendar\models\Event;
+use yii\base\Event;
 use yii\base\Behavior;
 use yii\db\ActiveRecord;
 use yii\db\AfterSaveEvent;
