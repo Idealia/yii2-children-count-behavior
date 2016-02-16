@@ -10,6 +10,7 @@ namespace idealia\behavior;
 
 use yii\base\Event;
 use yii\base\Behavior;
+use yii\db\ActiveQuery;
 use yii\db\ActiveRecord;
 use yii\db\AfterSaveEvent;
 
@@ -71,7 +72,12 @@ class ChildrenCountBehavior extends Behavior
     private function processModel(ActiveRecord $model)
     {
         $model->detachBehaviors();
-        $count = $model->{$this->countRelation}()->count();
+        $count = $model->{$this->countRelation}();
+        if ($count instanceof ActiveQuery) {
+            $count = $count->count();
+        } else if (is_array($count)) {
+            $count = json_encode($count);
+        }
         $model->{$this->columnToUpdate} = $count;
         $model->save(false, [$this->columnToUpdate]);
     }
